@@ -81,3 +81,7 @@ class GallSearch:
         return discounts
 
         
+if __name__ == '__main__':
+    gallsearch = GallSearch()
+    gallsearch.search('Rum')
+    gallsearch.show_discounts()
