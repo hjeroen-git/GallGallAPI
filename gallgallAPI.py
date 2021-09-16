@@ -1,9 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-import sys
-sys.path.append(r"D:\OneDrive\Documents\04_Programming\PythonProjects")
-from utils.slack import slack
+
 
 def parse_prices(soup):
     price_str = soup.find('span',{'class':'u-sr-only'}).text
@@ -83,12 +81,3 @@ class GallSearch:
         return discounts
 
         
-if __name__ == '__main__':
-    f = open("/home/pi/Documents/python/cronjobs/product_checker/product_APIs/checklists/gallgall.txt","r")
-    for line in f.readlines():
-        gSearch = GallSearch()
-        gSearch.search(line)
-        discounts = gSearch.show_discounts()
-        if len(discounts)>0:
-            slack.send_message("### *" + line.strip().upper() + "* ###\n\n" + '\n'.join(discounts))
-    f.close()
