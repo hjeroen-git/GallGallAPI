@@ -2,8 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import sys
-sys.path.append("/home/pi/Documents/python/cronjobs/product_checker/")
-from lib import slack
+sys.path.append(r"D:\OneDrive\Documents\04_Programming\PythonProjects")
+from utils.slack import slack
 
 def parse_prices(soup):
     price_str = soup.find('span',{'class':'u-sr-only'}).text
